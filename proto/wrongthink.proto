@@ -1,5 +1,7 @@
+syntax = "proto3";
+
 service wrongthink {
-  rpc GetChannels() returns (stream Channel) {}
+  rpc GetChannels(Channel) returns (stream Channel) {}
   rpc CreateChannel(Channel) returns (Channel) {}
   rpc JoinChannel(stream Message) returns (stream Message) {}
 }
