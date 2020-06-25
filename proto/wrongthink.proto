@@ -1,0 +1,16 @@
+service wrongthink {
+  rpc GetChannels() returns (stream Channel) {}
+  rpc CreateChannel(Channel) returns (Channel) {}
+  rpc JoinChannel(stream Message) returns (stream Message) {}
+}
+
+message Channel {
+  int32 channelid = 1;
+  bool public = 2;
+  string name = 3;
+}
+
+message Message {
+  string uname = 1;
+  string text = 2;
+}
