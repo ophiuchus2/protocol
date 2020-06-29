@@ -3,7 +3,8 @@ syntax = "proto3";
 service wrongthink {
   rpc GetWrongthinkChannels(WrongthinkChannel) returns (stream WrongthinkChannel) {}
   rpc CreateWrongthinkChannel(WrongthinkChannel) returns (WrongthinkChannel) {}
-  rpc JoinWrongthinkChannel(stream WrongthinkMessage) returns (stream WrongthinkMessage) {}
+  rpc SendWrongthinkMessage(stream WrongthinkMessage) returns (WrongthinkMeta) {}
+  rpc ListenWrongthinkMessages(WrongthinkMeta) returns (stream WrongthinkMessage) {}
 }
 
 message WrongthinkChannel {
@@ -15,4 +16,10 @@ message WrongthinkChannel {
 message WrongthinkMessage {
   string uname = 1;
   string text = 2;
+}
+
+message WrongthinkMeta {
+  int32 channelid = 1;
+  string channelname = 2;
+  string text = 3;
 }
