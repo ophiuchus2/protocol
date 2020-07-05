@@ -1,22 +1,31 @@
 syntax = "proto3";
 
 service wrongthink {
-  rpc GetWrongthinkChannels(WrongthinkChannel) returns (stream WrongthinkChannel) {}
+  rpc GetWrongthinkChannels(GetWrongthinkChannelsRequest) returns (stream WrongthinkChannel) {}
   rpc CreateWrongthinkChannel(WrongthinkChannel) returns (WrongthinkChannel) {}
   rpc SendWrongthinkMessage(stream WrongthinkMessage) returns (WrongthinkMeta) {}
   rpc ListenWrongthinkMessages(ListenWrongthinkMessagesRequest) returns (stream WrongthinkMessage) {}
 }
 
+message GetWrongthinkChannelsRequest {
+  int32 communityid = 1;
+}
+
 message WrongthinkChannel {
   int32 channelid = 1;
-  bool public = 2;
-  string name = 3;
+  int32 communityid = 2;
+  bool anonymous = 3;
+  string name = 4;
 }
 
 message WrongthinkMessage {
   string uname = 1;
   string channelname = 2;
-  string text = 3;
+  int32 channelid = 3;
+  int32 userid = 4;
+  int32 threadid = 5;
+  bool threadchild = 6;
+  string text = 7;
 }
 
 message WrongthinkMeta {
@@ -27,5 +36,6 @@ message WrongthinkMeta {
 
 message ListenWrongthinkMessagesRequest{
   string uname = 1;
-  string channelname = 2;
+  int32 channelid = 2;
+  string channelname = 3;
 }
