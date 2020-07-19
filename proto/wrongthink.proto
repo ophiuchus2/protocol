@@ -6,6 +6,19 @@ service wrongthink {
   rpc SendWrongthinkMessage(stream WrongthinkMessage) returns (WrongthinkMeta) {}
   rpc ListenWrongthinkMessages(ListenWrongthinkMessagesRequest) returns (stream WrongthinkMessage) {}
   rpc GetWrongthinkMessages(GetWrongthinkMessagesRequest) returns (stream WrongthinkMessage) {}
+  rpc CreateUser(CreateUserRequest) returns (WrongthinkUser) {}
+}
+
+message WrongthinkUser {
+  string uname = 1;
+  int32 userid = 2;
+  bool admin = 3;
+}
+
+message CreateUserRequest {
+  string uname = 1;
+  string password = 2;
+  bool admin = 3;
 }
 
 message GetWrongthinkMessagesRequest {
@@ -40,7 +53,9 @@ message WrongthinkMessage {
   int32 userid = 4;
   int32 threadid = 5;
   bool threadchild = 6;
-  string text = 7;
+  bool edited = 7;
+  string text = 8;
+  int32 date = 9;
 }
 
 message WrongthinkMeta {
