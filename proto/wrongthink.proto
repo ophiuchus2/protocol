@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 service wrongthink {
+  rpc GetWrongthinkCommunities(GetWrongthinkCommunitiesRequest) returns (stream WrongthinkCommunity) {}
   rpc GetWrongthinkChannels(GetWrongthinkChannelsRequest) returns (stream WrongthinkChannel) {}
   rpc CreateWrongthinkChannel(CreateWrongThinkChannelRequest) returns (WrongthinkChannel) {}
   rpc CreateWrongthinkCommunity(CreateWrongthinkCommunityRequest) returns (WrongthinkCommunity) {}
@@ -31,6 +32,11 @@ message GetWrongthinkMessagesRequest {
 
 message GetWrongthinkChannelsRequest {
   int32 communityid = 1;
+}
+
+message GetWrongthinkCommunitiesRequest {
+  string nameSearch = 1;
+  string descriptionSearch = 2;
 }
 
 message CreateWrongThinkChannelRequest {
