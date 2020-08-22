@@ -51,6 +51,7 @@ message WrongthinkChannel {
   int32 communityid = 2;
   bool anonymous = 3;
   string name = 4;
+  string unameadmin = 5;
 }
 
 message CreateWrongthinkCommunityRequest {
@@ -62,6 +63,7 @@ message CreateWrongthinkCommunityRequest {
 message WrongthinkCommunity {
   int32 communityid = 1;
   string name = 2;
+  string unameadmin = 3;
 }
 
 message WrongthinkMessage {
