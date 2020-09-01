@@ -6,6 +6,7 @@ service wrongthink {
   rpc CreateWrongthinkChannel(CreateWrongThinkChannelRequest) returns (WrongthinkChannel) {}
   rpc CreateWrongthinkCommunity(CreateWrongthinkCommunityRequest) returns (WrongthinkCommunity) {}
   rpc SendWrongthinkMessage(stream WrongthinkMessage) returns (WrongthinkMeta) {}
+  rpc SendWrongthinkMessageWeb(WrongthinkMessage) returns (WrongthinkMeta) {}
   rpc ListenWrongthinkMessages(ListenWrongthinkMessagesRequest) returns (stream WrongthinkMessage) {}
   rpc GetWrongthinkMessages(GetWrongthinkMessagesRequest) returns (stream WrongthinkMessage) {}
   rpc CreateUser(CreateUserRequest) returns (WrongthinkUser) {}
