@@ -77,6 +77,7 @@ message WrongthinkMessage {
   bool edited = 7;
   string text = 8;
   int32 date = 9;
+  int32 messageid = 10;
 }
 
 message WrongthinkMeta {
