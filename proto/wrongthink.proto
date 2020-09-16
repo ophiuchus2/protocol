@@ -10,13 +10,19 @@ service wrongthink {
   rpc ListenWrongthinkMessages(ListenWrongthinkMessagesRequest) returns (stream WrongthinkMessage) {}
   rpc GetWrongthinkMessages(GetWrongthinkMessagesRequest) returns (stream WrongthinkMessage) {}
   rpc CreateUser(CreateUserRequest) returns (WrongthinkUser) {}
+  rpc GenerateUser(GenericRequest) returns (WrongthinkUser) {}
 }
 
 message WrongthinkUser {
   string uname = 1;
-  int32 userid = 2;
-  bool admin = 3;
+  string token = 2;
+  int32 userid = 3;
+  bool admin = 4;
 }
+
+/* request messages */
+
+message GenericRequest { }
 
 message CreateUserRequest {
   string uname = 1;
@@ -47,18 +53,26 @@ message CreateWrongThinkChannelRequest {
   bool anonymous = 4;
 }
 
+message CreateWrongthinkCommunityRequest {
+  string name = 1;
+  int32 adminid = 2;
+  bool public = 3;
+}
+
+message ListenWrongthinkMessagesRequest{
+  string uname = 1;
+  int32 channelid = 2;
+  string channelname = 3;
+}
+
+/* data structures */
+
 message WrongthinkChannel {
   int32 channelid = 1;
   int32 communityid = 2;
   bool anonymous = 3;
   string name = 4;
   string unameadmin = 5;
-}
-
-message CreateWrongthinkCommunityRequest {
-  string name = 1;
-  int32 adminid = 2;
-  bool public = 3;
 }
 
 message WrongthinkCommunity {
@@ -84,10 +98,4 @@ message WrongthinkMeta {
   int32 channelid = 1;
   string channelname = 2;
   string text = 3;
-}
-
-message ListenWrongthinkMessagesRequest{
-  string uname = 1;
-  int32 channelid = 2;
-  string channelname = 3;
 }
