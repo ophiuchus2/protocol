@@ -20,6 +20,11 @@ message WrongthinkUser {
   bool admin = 4;
 }
 
+message Credentials {
+  string uname = 1;
+  string token = 2;
+}
+
 /* request messages */
 
 message GenericRequest { }
@@ -51,12 +56,14 @@ message CreateWrongThinkChannelRequest {
   int32 communityid = 2;
   int32 adminid = 3;
   bool anonymous = 4;
+  Credentials credentials = 5;
 }
 
 message CreateWrongthinkCommunityRequest {
   string name = 1;
   int32 adminid = 2;
   bool public = 3;
+  Credentials credentials = 4;
 }
 
 message ListenWrongthinkMessagesRequest{
