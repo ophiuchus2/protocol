@@ -11,6 +11,8 @@ service wrongthink {
   rpc GetWrongthinkMessages(GetWrongthinkMessagesRequest) returns (stream WrongthinkMessage) {}
   rpc CreateUser(CreateUserRequest) returns (WrongthinkUser) {}
   rpc GenerateUser(GenericRequest) returns (WrongthinkUser) {}
+  rpc DeleteMessage(DeleteMessageRequest) returns (GenericResponse) {}
+  rpc BanUser(BanUserRequest) returns (GenericResponse) {}
 }
 
 message WrongthinkUser {
@@ -28,6 +30,14 @@ message Credentials {
 /* request messages */
 
 message GenericRequest { }
+
+message BanUserRequest {
+
+}
+
+message DeleteMessageRequest {
+
+}
 
 message CreateUserRequest {
   string uname = 1;
@@ -73,6 +83,8 @@ message ListenWrongthinkMessagesRequest{
 }
 
 /* data structures */
+
+message GenericResponse { }
 
 message WrongthinkChannel {
   int32 channelid = 1;
