@@ -13,6 +13,8 @@ service wrongthink {
   rpc GenerateUser(GenericRequest) returns (WrongthinkUser) {}
   rpc DeleteMessage(DeleteMessageRequest) returns (GenericResponse) {}
   rpc BanUser(BanUserRequest) returns (GenericResponse) {}
+  rpc GetBannedUsers(GenericRequest) returns (stream GetBannedUsersResponse) {}
+  rpc GetBannedIPs(GenericRequest) returns (stream GetBannedIPsResponse) {}
 }
 
 message WrongthinkUser {
@@ -29,10 +31,14 @@ message Credentials {
 
 /* request messages */
 
-message GenericRequest { }
+message GenericRequest {
+  string command = 1;
+  string data = 2;
+}
 
 message BanUserRequest {
-
+  string uname = 1;
+  int32 days = 2;
 }
 
 message DeleteMessageRequest {
@@ -80,6 +86,18 @@ message ListenWrongthinkMessagesRequest{
   string uname = 1;
   int32 channelid = 2;
   string channelname = 3;
+}
+
+/* response messages */
+
+message GetBannedUsersResponse {
+  string uname = 1;
+  int32 expiration = 2;
+}
+
+message GetBannedIPsResponse {
+  string IP = 1;
+  int32 exiration = 2;
 }
 
 /* data structures */
