@@ -102,7 +102,9 @@ message GetBannedIPsResponse {
 
 /* data structures */
 
-message GenericResponse { }
+message GenericResponse { 
+  string message = 1;
+}
 
 message WrongthinkChannel {
   int32 channelid = 1;
